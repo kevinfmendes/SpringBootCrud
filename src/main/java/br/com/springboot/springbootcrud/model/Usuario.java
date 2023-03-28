@@ -1,11 +1,15 @@
 package br.com.springboot.springbootcrud.model;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario", allocationSize = 1, initialValue = 1)
@@ -26,7 +30,10 @@ public class Usuario implements Serializable {
 	private String nome;
 	
 	private int idade;
-
+	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private LocalDate dataNascimento;
+		
 	//getter/setters
 	public Long getId() {
 		return id;
@@ -51,5 +58,15 @@ public class Usuario implements Serializable {
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	
+	
 	
 }
